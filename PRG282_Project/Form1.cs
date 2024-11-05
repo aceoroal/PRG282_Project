@@ -7,6 +7,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.UI.Design.WebControls;
 using System.Web.UI.WebControls;
 using System.Windows.Forms;
 using static Guna.UI2.WinForms.Suite.Descriptions;
@@ -19,7 +20,6 @@ namespace PRG282_Project
         {
             InitializeComponent();
         }
-        
         // Navigation focus
         public void NavFocus(Guna2Button btn)
         {
@@ -45,30 +45,32 @@ namespace PRG282_Project
         }
 
         // Switching panels
-        public void SwitchPannel(Form panel)
+        public void SwitchPannel(Form form)
         {
             pnlMain.Controls.Clear();
-            panel.TopLevel = false;
-            pnlMain.Controls.Add(panel);
-            panel.Show();
+            form.TopLevel = false;
+            form.FormBorderStyle = FormBorderStyle.None;
+            form.Dock = DockStyle.Fill;
+            pnlMain.Controls.Add(form);
+            form.Show();
         }
-
-        Dashboard dashboard = new Dashboard();
-        Student student = new Student();
 
         private void Form1_Load(object sender, EventArgs e)
         {
             Shadow.SetShadowForm(this);
-            
+            Dashboard dashboard = new Dashboard();
+            SwitchPannel(dashboard);
         }
         private void navDeshboard_Click(object sender, EventArgs e)
         {
+            Dashboard dashboard = new Dashboard();
             NavFocus(navDeshboard);
             SwitchPannel(dashboard);
         }
 
         private void navAdd_Click(object sender, EventArgs e)
         {
+            Student student = new Student();
             NavFocus(navAdd);
             SwitchPannel(student);
         }

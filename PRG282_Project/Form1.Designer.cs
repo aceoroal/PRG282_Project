@@ -219,7 +219,7 @@
         private Guna.UI2.WinForms.Guna2Button navLogout;
         private Guna.UI2.WinForms.Guna2Button navAdd;
         private Guna.UI2.WinForms.Guna2Button navDeshboard;
-        private System.Windows.Forms.Panel pnlMain;
+        public System.Windows.Forms.Panel pnlMain;
     }
 }
 
