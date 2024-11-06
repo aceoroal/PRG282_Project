@@ -9,38 +9,47 @@ using System.Threading.Tasks;
 using System.Web.UI.WebControls;
 using System.Windows.Forms;
 
+// import all required layers
+using PRG282_Project.PresentationLayer;
+
 namespace PRG282_Project
 {
     public partial class Dashboard : Form
     {
+        private UserInput gui;
         public Dashboard()
         {
             InitializeComponent();
         }
+        private Form1 mainForm;
+        public Dashboard(Form1 form1)
+        {
+            InitializeComponent();
+            mainForm = form1;
+        }
 
         private void Dashboard_Load(object sender, EventArgs e)
         {
+            if (mainForm.lblLoad.Text == "disable")
+            {
+                gui = new UserInput(this);
+                gui.DisableControls();
+            }
+            else lblViewAll.Visible = false;
             cboSearch.SelectedItem = "ID";
         }
         
         private void btnViewAll_Click(object sender, EventArgs e)
         {
-            
+            gui = new UserInput(this);
+            gui.EnableControls();
+            mainForm.lblLoad.Text = "";
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            //MessageBox.Show("Working");
-            Form1 form1 = new Form1();
-            EditPage editPage = new EditPage();
-            //form1.SwitchPannel(editPage);
-
-            form1.pnlMain.Controls.Clear();
-            editPage.TopLevel = false;
-            editPage.FormBorderStyle = FormBorderStyle.None;
-            editPage.Dock = DockStyle.Fill;
-            form1.pnlMain.Controls.Add(editPage);
-            editPage.Show();
+            EditPage editPage = new EditPage(mainForm);
+            mainForm.SwitchPannel(editPage);
         }
     }
 }
