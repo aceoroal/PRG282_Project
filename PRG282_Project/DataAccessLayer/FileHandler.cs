@@ -1,56 +1,64 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
-namespace PRG282_Project.DataAccessLayer
+namespace j
 {
     internal class FileHandler
     {
-        // Connection to file system
+        
 
-        // TODO:
-        // 1. Writing and Reading text file (Create, Read, Update, Delete)
-        // 2. Search students
-        // 3. Generate summary (from the logic layer)
+        string path = @"students.txt";
+        string summaryPath = @"summary.txt";
+        public List<Student> Read()
+        {
+            List<Student> students = new List<Student>();
+            if (File.Exists(path))
+            {
+                using(StreamReader sr = new StreamReader(path))
+                {
+                    string lines;
+                    while ((lines = sr.ReadLine()) != null)
+                    {
+                        var templines = lines.Split(',').ToList();
+                        Student student = new Student(templines[0], templines[1], int.Parse(templines[2]), double.Parse(templines[3])); 
+                        students.Add(student);
+                    }
+     
+                }
+                
+            }
+            else
+            {
+                Console.WriteLine("File not found!");
+            }
+            return students;
 
-         public void write(List<Student> plist)
+        }
+        public void Write(List<Student> students)
         {
 
-            
-
-            List<string> output = new List<string>();
-            foreach (Student person in plist)
+            using(StreamWriter sw = new StreamWriter(path))
             {
-                output.Add(person.ToString());
-            }
-            File.WriteAllLines(path, output);
+                foreach (Student student in students)
+                {
+                    sw.WriteLine($"{student.StudentId},{student.Name},{student.Age},{student.Mark}");
+                }
+            }                    
             Console.WriteLine("Formatted and written to file");
 
         }
 
-        
-
-        public List<string> read()
+        public void GenerateSummary(int totalStudents, double averageAge)
         {
-            List<string> list = new List<string>();
-            if (File.Exists(path))
+            using (StreamWriter sw = new StreamWriter(summaryPath))
             {
-                
-                list = File.ReadAllLines(path).ToList();
-
-                Console.WriteLine("Original Data:");
-                Console.WriteLine("======================");
-
-                foreach (string line in list)
-                {
-                    Console.WriteLine(line);
-                }
-                Console.WriteLine("=========================");
+                sw.WriteLine($"Total Students: {totalStudents}\nAverage Age: {averageAge}");
             }
-            
-            return list;
+            Console.WriteLine("Summary Report written to file");
         }
     }
 }
