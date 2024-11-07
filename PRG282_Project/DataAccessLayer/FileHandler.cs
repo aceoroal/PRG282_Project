@@ -15,13 +15,13 @@ namespace PRG282_Project.DataAccessLayer
         // 2. Search students
         // 3. Generate summary (from the logic layer)
 
-         public void write(List<Students> plist)
+         public void write(List<Student> plist)
         {
 
             
 
             List<string> output = new List<string>();
-            foreach (Students person in plist)
+            foreach (Student person in plist)
             {
                 output.Add(person.ToString());
             }
