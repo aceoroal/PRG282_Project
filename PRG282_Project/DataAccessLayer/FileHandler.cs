@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 
-namespace j
+namespace PRG282_Project
 {
     internal class FileHandler
     {
