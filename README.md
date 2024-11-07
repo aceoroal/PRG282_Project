@@ -19,6 +19,7 @@
 > - In the NuGet Package Manager, click on the **Browse** tab.
 
 > - Search for `Guna.UI2.WinForms`. If `Guna.UI2.WinForms` is already installed, uninstall it and then install it again to ensure compatibility.
+> - Search for `HtmlRenderer.PdfSharp`. If `HtmlRenderer.PdfSharp` is already installed, uninstall it and then install it again to ensure compatibility.
 
 ### 2. Run the Application
 After installing the package, you can run the application by pressing **F5** or clicking **Start** in Visual Studio.
@@ -26,3 +27,5 @@ After installing the package, you can run the application by pressing **F5** or 
 > **Dependencies**
 >> - .NET Framework (4.8)
 >> - Guna.UI2.WinForms (for UI components)
+>> - HtmlRenderer.PdfSharp (This library provides the ability to generate PDF documents from HTML snippets using static rendering code.
+For more info see HTML Renderer on CodePlex: [http://htmlrenderer.codeplex.com](http://htmlrenderer.codeplex.com))
