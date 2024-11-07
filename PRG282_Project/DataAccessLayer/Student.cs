@@ -11,15 +11,15 @@ namespace PRG282_Project.DataAccessLayer
         public string StudentId { get; set; }
         public string Name { get; set; }
         public int Age { get; set; }
-        public double Mark { get; set; }
+        public string Course { get; set; }
 
 
-        public Student(string studentId, string name, int age, double mark)
+        public Student(string studentId, string name, int age, string course)
         {
             StudentId = studentId;
             Name = name;
             Age = age;
-            Mark = mark;
+            Course = course;
         }
     }
 

@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 
-namespace PRG282_Project
+namespace PRG282_Project.DataAccessLayer
 {
     internal class FileHandler
     {
@@ -24,7 +24,7 @@ namespace PRG282_Project
                     while ((lines = sr.ReadLine()) != null)
                     {
                         var templines = lines.Split(',').ToList();
-                        Student student = new Student(templines[0], templines[1], int.Parse(templines[2]), double.Parse(templines[3])); 
+                        Student student = new Student(templines[0], templines[1], int.Parse(templines[2]), templines[3]);
                         students.Add(student);
                     }
      
@@ -45,7 +45,7 @@ namespace PRG282_Project
             {
                 foreach (Student student in students)
                 {
-                    sw.WriteLine($"{student.StudentId},{student.Name},{student.Age},{student.Mark}");
+                    sw.WriteLine($"{student.StudentId},{student.Name},{student.Age},{student.Course}");
                 }
             }                    
             Console.WriteLine("Formatted and written to file");

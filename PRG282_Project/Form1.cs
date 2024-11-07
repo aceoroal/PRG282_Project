@@ -53,7 +53,7 @@ namespace PRG282_Project
 
         private void navAdd_Click(object sender, EventArgs e)
         {
-            Student student = new Student();
+            Register student = new Register();
             gui = new UserInput(this);
             gui.NavFocus(navAdd);
             gui.SwitchPannel(student, pnlMain);
