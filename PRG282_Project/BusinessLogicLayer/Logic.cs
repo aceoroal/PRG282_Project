@@ -13,7 +13,7 @@ using PRG282_Project.DataAccessLayer;
 namespace PRG282_Project.BusinessLogicLayer
 {
     internal class Logic
-    { 
+    {
         FileHandler fh = new FileHandler(); // Object of the FileHandler class
 
         // Method to calculate for a summary report
@@ -43,7 +43,7 @@ namespace PRG282_Project.BusinessLogicLayer
 
             foreach (var student in students)
             {
-                if(student.StudentId == studentId) // Checks if student ID matches
+                if (student.StudentId == studentId) // Checks if student ID matches
                 {
                     students.Remove(student); // Removes student from list if student ID matches
                 }
@@ -54,7 +54,7 @@ namespace PRG282_Project.BusinessLogicLayer
         }
 
         public DataTable DisplayStudents()
-        { 
+        {
             DataTable dt = new DataTable(); // Creates new data table that will appear on data grid view
             List<Student> students = fh.Read(); // Reads from original list
 
@@ -207,7 +207,7 @@ namespace PRG282_Project.BusinessLogicLayer
                 }
             }
 
-            if(!courseFound)
+            if (!courseFound)
             {
                 MessageBox.Show($"Course '{course}' not found!");
             }

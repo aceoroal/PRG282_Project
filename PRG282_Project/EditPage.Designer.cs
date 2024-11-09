@@ -33,13 +33,13 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.txtAge = new Guna.UI2.WinForms.Guna2NumericUpDown();
-            this.txtCourse = new Guna.UI2.WinForms.Guna2TextBox();
             this.txtName = new Guna.UI2.WinForms.Guna2TextBox();
             this.txtStudentID = new Guna.UI2.WinForms.Guna2TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnCancel = new Guna.UI2.WinForms.Guna2Button();
             this.btnSave = new Guna.UI2.WinForms.Guna2Button();
             this.label5 = new System.Windows.Forms.Label();
+            this.cboCourse = new Guna.UI2.WinForms.Guna2ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.txtAge)).BeginInit();
             this.SuspendLayout();
             // 
@@ -90,34 +90,21 @@
             this.txtAge.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtAge.Location = new System.Drawing.Point(444, 153);
             this.txtAge.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtAge.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.txtAge.Name = "txtAge";
             this.txtAge.Size = new System.Drawing.Size(252, 34);
             this.txtAge.TabIndex = 12;
             this.txtAge.UpDownButtonFillColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(26)))), ((int)(((byte)(26)))));
             this.txtAge.UpDownButtonForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            // 
-            // txtCourse
-            // 
-            this.txtCourse.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.txtCourse.DefaultText = "";
-            this.txtCourse.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.txtCourse.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.txtCourse.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtCourse.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.txtCourse.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtCourse.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.txtCourse.ForeColor = System.Drawing.Color.Black;
-            this.txtCourse.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtCourse.Location = new System.Drawing.Point(444, 264);
-            this.txtCourse.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.txtCourse.MaxLength = 20;
-            this.txtCourse.Name = "txtCourse";
-            this.txtCourse.PasswordChar = '\0';
-            this.txtCourse.PlaceholderForeColor = System.Drawing.Color.Silver;
-            this.txtCourse.PlaceholderText = "Course code";
-            this.txtCourse.SelectedText = "";
-            this.txtCourse.Size = new System.Drawing.Size(252, 34);
-            this.txtCourse.TabIndex = 11;
+            this.txtAge.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // txtName
             // 
@@ -212,6 +199,7 @@
             this.btnSave.Size = new System.Drawing.Size(221, 45);
             this.btnSave.TabIndex = 20;
             this.btnSave.Text = "Save Changes";
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // label5
             // 
@@ -223,12 +211,37 @@
             this.label5.TabIndex = 21;
             this.label5.Text = "Update Student Details";
             // 
+            // cboCourse
+            // 
+            this.cboCourse.BackColor = System.Drawing.Color.Transparent;
+            this.cboCourse.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.cboCourse.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cboCourse.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboCourse.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cboCourse.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cboCourse.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.cboCourse.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.cboCourse.ItemHeight = 30;
+            this.cboCourse.Items.AddRange(new object[] {
+            "BComp",
+            "BIT",
+            "PTBIT",
+            "DIT",
+            "DipDS",
+            "NCIT",
+            "CIT"});
+            this.cboCourse.Location = new System.Drawing.Point(444, 263);
+            this.cboCourse.Name = "cboCourse";
+            this.cboCourse.Size = new System.Drawing.Size(252, 36);
+            this.cboCourse.TabIndex = 35;
+            // 
             // EditPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(828, 572);
+            this.Controls.Add(this.cboCourse);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnCancel);
@@ -238,7 +251,6 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtAge);
-            this.Controls.Add(this.txtCourse);
             this.Controls.Add(this.txtName);
             this.Controls.Add(this.txtStudentID);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -257,12 +269,12 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private Guna.UI2.WinForms.Guna2NumericUpDown txtAge;
-        private Guna.UI2.WinForms.Guna2TextBox txtCourse;
         private Guna.UI2.WinForms.Guna2TextBox txtName;
         private Guna.UI2.WinForms.Guna2TextBox txtStudentID;
         private System.Windows.Forms.Panel panel1;
         private Guna.UI2.WinForms.Guna2Button btnCancel;
         private Guna.UI2.WinForms.Guna2Button btnSave;
         private System.Windows.Forms.Label label5;
+        private Guna.UI2.WinForms.Guna2ComboBox cboCourse;
     }
 }

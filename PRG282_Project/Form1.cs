@@ -12,12 +12,12 @@ using System.Web.UI.Design.WebControls;
 using System.Web.UI.WebControls;
 using System.Windows.Forms;
 using static Guna.UI2.WinForms.Suite.Descriptions;
+using System.IO;
 
 namespace PRG282_Project
 {
     public partial class Form1 : Form
     {
-        
         public Form1()
         {
             InitializeComponent();
@@ -27,7 +27,7 @@ namespace PRG282_Project
 
         public void SwitchPannel(Form form)
         {
-            pnlMain.Controls.Clear();
+            pnlMain.Controls.Clear(); // clearing all the controls inside the 'pnlMain' Panel
             form.TopLevel = false;
             form.FormBorderStyle = FormBorderStyle.None;
             form.Dock = DockStyle.Fill;
@@ -69,8 +69,12 @@ namespace PRG282_Project
 
         private void btnClose_Click(object sender, EventArgs e)
         {
-            // Closing the Application
-            Environment.Exit(0);
+            var closeApp = MessageBox.Show("Are you sure you want to close this Application?", "Close App", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2);
+
+            if (closeApp == DialogResult.Yes)
+            {
+                Environment.Exit(0); // Closing the Application
+            }
         }
     }
 }

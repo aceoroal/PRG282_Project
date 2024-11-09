@@ -36,6 +36,18 @@
     <Reference Include="Guna.UI2, Version=2.0.4.6, Culture=neutral, PublicKeyToken=8b9d14aa5142e261, processorArchitecture=MSIL">
       <HintPath>..\packages\Guna.UI2.WinForms.2.0.4.6\lib\net48\Guna.UI2.dll</HintPath>
     </Reference>
+    <Reference Include="HtmlRenderer, Version=1.5.0.5, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\HtmlRenderer.Core.1.5.0.5\lib\net45\HtmlRenderer.dll</HintPath>
+    </Reference>
+    <Reference Include="HtmlRenderer.PdfSharp, Version=1.5.0.6, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\HtmlRenderer.PdfSharp.1.5.0.6\lib\net45\HtmlRenderer.PdfSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="PdfSharp, Version=1.32.3057.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
+      <HintPath>..\packages\PDFsharp.1.32.3057.0\lib\net20\PdfSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="PdfSharp.Charting, Version=1.32.3057.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
+      <HintPath>..\packages\PDFsharp.1.32.3057.0\lib\net20\PdfSharp.Charting.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Design" />
@@ -153,6 +165,27 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\bc logo.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Background design.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\side1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pdf icon_red.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pdf icon_white.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\txt icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\txt icon_white.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\wired_bg_text.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

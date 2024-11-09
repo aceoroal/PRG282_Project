@@ -8,6 +8,10 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+// import namespaces
+using PRG282_Project.BusinessLogicLayer;
+using System.Xml.Linq;
+
 namespace PRG282_Project.PresentationLayer
 {
     internal class UserInput
@@ -16,6 +20,12 @@ namespace PRG282_Project.PresentationLayer
 
         private Dashboard dashboard;
         private Form1 mainForm;
+
+        // Default constructor
+        public UserInput()
+        {
+
+        }
         public UserInput(Dashboard form)
         {
             dashboard = form;
@@ -92,6 +102,95 @@ namespace PRG282_Project.PresentationLayer
             dashboard.btnLast.Enabled = true;
             dashboard.btnDelete.Enabled = true;
             dashboard.btnEdit.Enabled = true;
+        }
+
+        // Clear search
+        public void ClearSearch()
+        {
+            dashboard.cboSearch.SelectedItem = "ID";
+            dashboard.txtSearch.Clear();
+        }
+
+        // Adding a Student
+        public Boolean AddStudent(string studentId, string name, int age, string course)
+        {
+            Logic logic = new Logic();
+
+            if (!logic.ValidID(studentId))
+            {
+                MessageBox.Show("Student ID should only contain 6 digit numbers.");
+                return false;
+            }
+            
+            if (!logic.ValidName(name))
+            {
+                MessageBox.Show("Name should only contain alphabet characters with no spaces or special characters.");
+                return false;
+            }
+
+            logic.AddStudent(studentId, name, age, course);
+
+            MessageBox.Show("Student added successfully!, please check the students.txt file in the bin folder");
+            return true;
+        }
+
+
+        // Updating a Student
+        public void UpdateStudent(string studentId, string name, int age, string course)
+        {
+            var input = MessageBox.Show("Are you sure you want to save these changes?", "Update Student", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2);
+
+            if (input == DialogResult.Yes)
+            {
+                Logic logic = new Logic();
+
+                if (!logic.ValidName(name))
+                {
+                    MessageBox.Show("Name should only contain alphabet characters with no spaces or special characters.");
+                    return;
+                }
+
+                logic.UpdateStudent(studentId, name, age, course);
+
+                MessageBox.Show("Student updated successfully!");
+            }
+        }
+
+
+        // Delete a Student
+        public void DeleteStudent(string studentId)
+        {
+            var input = MessageBox.Show("Are you sure you want to delete this student?", "Delete Student", MessageBoxButtons.YesNo, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button2);
+
+            if (input == DialogResult.Yes)
+            {
+                Logic logic = new Logic();
+
+                logic.DeleteStudent(studentId);
+
+                MessageBox.Show("Student deleted successfully!");
+            }
+        }
+
+        // Disable Row Navigation Buttons
+        public void DisableRowNavigationButtons(int rowCount)
+        {
+            if (rowCount > 1)
+            {
+                dashboard.btnFirst.Enabled = false;
+                dashboard.btnPrevious.Enabled = false;
+
+                dashboard.btnNext.Enabled = true;
+                dashboard.btnLast.Enabled = true;
+            }
+            else
+            {
+                // Disable all the row navigation buttons
+                dashboard.btnFirst.Enabled = false;
+                dashboard.btnPrevious.Enabled = false;
+                dashboard.btnNext.Enabled = false;
+                dashboard.btnLast.Enabled = false;
+            }
         }
     }
 }
