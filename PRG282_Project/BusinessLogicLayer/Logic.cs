@@ -16,6 +16,19 @@ namespace PRG282_Project.BusinessLogicLayer
     {
         FileHandler fh = new FileHandler(); // Object of the FileHandler class
 
+        // Generate a new Student ID
+        public string GenerateStudentID()
+        {
+            int studentId = fh.ReadStudentIDGen();
+            studentId++; // Add 1 to the Student ID
+            return studentId.ToString();
+        }
+        public void PassGeneratedStudentID()
+        {
+            fh.StoreLastStudentID(GenerateStudentID());
+        }
+
+
         // Method to calculate for a summary report
         public (int, double) Calculate()
         {
@@ -23,7 +36,7 @@ namespace PRG282_Project.BusinessLogicLayer
             int totalAge = 0;
 
             // Loop through each student in the list and add up their ages
-            foreach (var student in students)
+            foreach (Student student in students)
             {
                 totalAge += student.Age;
             }
@@ -31,26 +44,44 @@ namespace PRG282_Project.BusinessLogicLayer
             int totalStudents = students.Count; // Counts total sstudents
             double averageAge = Math.Round((Convert.ToDouble(totalAge) / totalStudents), 2); // Calculates total average using total student and rounds answer to two decimal places
 
-            // Pass calculated values to the GenerateSummary method
-            fh.GenerateSummary(totalStudents, averageAge);
+            if (averageAge.ToString() == "NaN")
+            {
+                averageAge = 0;
+            }
 
             return (totalStudents, averageAge);
+        }
+
+        public void CalculateForTXT()
+        {
+            int totalStudents = 0;
+            double averageAge = 0;
+            (totalStudents, averageAge) = Calculate();
+            // Pass calculated values to the GenerateSummary method for a TXT File
+            fh.GenerateSummary(totalStudents, averageAge);
+        }
+
+        public void CalculateForPDF()
+        {
+            int totalStudents = 0;
+            double averageAge = 0;
+            (totalStudents, averageAge) = Calculate();
+            // Pass calculated values to the GenerateSummary method for a PDF File
+            fh.GeneratePDFSummary(totalStudents, averageAge);
         }
         public void DeleteStudent(string studentId)
         {
             // Reads from the orignal list
             List<Student> students = fh.Read();
-
-            foreach (var student in students)
+            for (int i = students.Count - 1; i >= 0; i--)
             {
-                if (student.StudentId == studentId) // Checks if student ID matches
+                if (students[i].StudentId == studentId)
                 {
-                    students.Remove(student); // Removes student from list if student ID matches
+                    students.RemoveAt(i); // Removes student by index
                 }
             }
 
             fh.Write(students); // Passes the updated list to user
-            MessageBox.Show("Student was deleted successfully!");
         }
 
         public DataTable DisplayStudents()
@@ -64,13 +95,39 @@ namespace PRG282_Project.BusinessLogicLayer
             dt.Columns.Add("Age");
             dt.Columns.Add("Course");
 
-            foreach (var student in students)
+            foreach (Student student in students)
             {
-                dt.Rows.Add(student); // Add each student's data as a new row in the DataTable
+                dt.Rows.Add(student.StudentId, student.Name, student.Age, student.Course); // Add each student's data as a new row in the DataTable
             }
 
             return dt;
         }
+
+
+        // Input Validations
+        string pattern = ""; // Declared pattern as a global variable
+        public Boolean ValidID(string studentId)
+        {
+            pattern = @"^\d{6}$"; // Validates student IDs with 6 digit numbers (no letters or other special characters)
+
+            Regex rg = new Regex(pattern);
+
+            bool validID = rg.IsMatch(studentId); // Stores true if the Student Id is valid, else false
+
+            return validID;
+        }
+
+        public Boolean ValidName(string name)
+        {
+            pattern = @"^[a-zA-Z]{3,}$"; // Validates name with 3 minimum characters (letters only and no spaces or other characters)
+
+            Regex rg = new Regex(pattern);
+
+            bool validName = rg.IsMatch(name); // Stores true if the Name is valid, else false
+
+            return validName;
+        }
+
 
         public void AddStudent(string studentId, string name, int age, string course)
         {
