@@ -7,6 +7,7 @@ using System.Windows.Forms;
 using System.Data;
 using System.Text.RegularExpressions;
 
+
 // import namespaces
 using PRG282_Project.DataAccessLayer;
 
@@ -102,10 +103,152 @@ namespace PRG282_Project.BusinessLogicLayer
 
             return dt;
         }
+        public void AddStudent(string studentId, string name, int age, string course)
+        {
+            List<Student> students = fh.Read(); // Reads from original list
+
+            Student student = new Student(studentId, name, age, course);
+            students.Add(student);// Adding a new Student to list
+
+            fh.Write(students); // Passing updated student list to FileHandler
+        }
+        public void UpdateStudent(string studentId, string studentName, int age, string course)
+        {
+            List<Student> students = fh.Read();
+            foreach (Student student in students)
+            {
+                if (student.StudentId == studentId)
+                {
+                    // Overriding student details if the student ID matches
+                    student.Name = studentName;
+                    student.Age = age;
+                    student.Course = course;
+                }
+            }
+
+            fh.Write(students); // Passing updated student list to FileHandler
+        }
+
+        // Search by Student ID
+        public DataTable SearchStudentID(string studentId)
+        {
+            DataTable dt = new DataTable();
+            List<Student> students = fh.Read(); // Reads from original list
+
+            // Define columns for the DataTable
+            dt.Columns.Add("StudentId");
+            dt.Columns.Add("Name");
+            dt.Columns.Add("Age");
+            dt.Columns.Add("Course");
+            foreach (Student student in students)
+            {
+                if (student.StudentId == studentId)
+                {
+                    dt.Rows.Add(student.StudentId, student.Name, student.Age, student.Course); // Adds a student's data as a new row in the DataTable
+                    return dt; // Returns immediately after finding matching student ID
+                }
+            }
+            MessageBox.Show($"Student ID '{studentId}' not found!");
+
+            return dt;
+        }
+
+        // Search by Name
+        public DataTable SearchStudentName(string name)
+        {
+            DataTable dt = new DataTable();
+            List<Student> students = fh.Read(); // Reads from original list
+
+            // Define columns for the DataTable
+            dt.Columns.Add("StudentId");
+            dt.Columns.Add("Name");
+            dt.Columns.Add("Age");
+            dt.Columns.Add("Course");
+
+            bool nameFound = false;
+
+            foreach (Student student in students)
+            {
+                if (student.Name.ToUpper() == name.ToUpper()) // converts values to Upper case letters (now it's Not Case Sensitive)
+                {
+                    nameFound = true;
+                    dt.Rows.Add(student.StudentId, student.Name, student.Age, student.Course); // Adds each student's data as a new row in the DataTable
+                }
+            }
+            if (!nameFound)
+            {
+                MessageBox.Show($"Name '{name}' not found!");
+            }
+
+            return dt;
+        }
+
+
+        // Search by Age
+        public DataTable SearchStudentAge(int age)
+        {
+            DataTable dt = new DataTable();
+            List<Student> students = fh.Read(); // Reads from original list
+
+            // Define columns for the DataTable
+            dt.Columns.Add("StudentId");
+            dt.Columns.Add("Name");
+            dt.Columns.Add("Age");
+            dt.Columns.Add("Course");
+
+            bool ageFound = false;
+
+            foreach (Student student in students)
+            {
+                if (student.Age == age)
+                {
+                    ageFound = true;
+                    dt.Rows.Add(student.StudentId, student.Name, student.Age, student.Course); // Adds each student's data as a new row in the DataTable
+                }
+            }
+            if (!ageFound)
+            {
+                MessageBox.Show($"Age '{age}' not found!");
+            }
+
+            return dt;
+        }
+
+        // Search by Course
+        public DataTable SearchStudentCourse(string course)
+        {
+            DataTable dt = new DataTable();
+            List<Student> students = fh.Read(); // Reads from original list
+
+            // Define columns for the DataTable
+            dt.Columns.Add("StudentId");
+            dt.Columns.Add("Name");
+            dt.Columns.Add("Age");
+            dt.Columns.Add("Course");
+
+            bool courseFound = false;
+
+            foreach (Student student in students)
+            {
+                if (student.Course.ToUpper() == course.ToUpper()) // converts values to Upper case letters (now it's Not Case Sensitive)
+                {
+                    courseFound = true;
+                    dt.Rows.Add(student.StudentId, student.Name, student.Age, student.Course); // Adds each student's data as a new row in the DataTable
+                }
+            }
+
+            if (!courseFound)
+            {
+                MessageBox.Show($"Course '{course}' not found!");
+            }
+
+            return dt;
+        }
+
 
 
         // Input Validations
-        string pattern = ""; // Declared pattern as a global variable
+        string pattern = ""; // Declared pattern as a global variable 
         public Boolean ValidID(string studentId)
         {
             pattern = @"^\d{6}$"; // Validates student IDs with 6 digit numbers (no letters or other special characters)
