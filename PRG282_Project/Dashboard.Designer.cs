@@ -53,6 +53,7 @@
             this.btnPrevious = new Guna.UI2.WinForms.Guna2CircleButton();
             this.btnFirst = new Guna.UI2.WinForms.Guna2CircleButton();
             this.lblViewAll = new System.Windows.Forms.Label();
+            this.lblNoStudents = new System.Windows.Forms.Label();
             this.guna2Panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvStudents)).BeginInit();
@@ -160,24 +161,27 @@
             this.btnSearch.Size = new System.Drawing.Size(116, 42);
             this.btnSearch.TabIndex = 3;
             this.btnSearch.Text = "Search";
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // dgvStudents
             // 
             this.dgvStudents.AllowUserToAddRows = false;
             this.dgvStudents.AllowUserToDeleteRows = false;
+            this.dgvStudents.AllowUserToResizeColumns = false;
+            this.dgvStudents.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
             this.dgvStudents.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvStudents.BackgroundColor = System.Drawing.Color.Silver;
+            this.dgvStudents.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(26)))), ((int)(((byte)(26)))));
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvStudents.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.dgvStudents.ColumnHeadersHeight = 4;
-            this.dgvStudents.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
+            this.dgvStudents.ColumnHeadersHeight = 25;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -192,7 +196,7 @@
             this.dgvStudents.ReadOnly = true;
             this.dgvStudents.RowHeadersVisible = false;
             this.dgvStudents.RowHeadersWidth = 51;
-            this.dgvStudents.RowTemplate.Height = 24;
+            this.dgvStudents.RowTemplate.Height = 25;
             this.dgvStudents.Size = new System.Drawing.Size(638, 295);
             this.dgvStudents.TabIndex = 3;
             this.dgvStudents.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
@@ -202,20 +206,21 @@
             this.dgvStudents.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Empty;
             this.dgvStudents.ThemeStyle.BackColor = System.Drawing.Color.Silver;
             this.dgvStudents.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.dgvStudents.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            this.dgvStudents.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(26)))), ((int)(((byte)(26)))));
             this.dgvStudents.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.dgvStudents.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgvStudents.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
-            this.dgvStudents.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            this.dgvStudents.ThemeStyle.HeaderStyle.Height = 4;
+            this.dgvStudents.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dgvStudents.ThemeStyle.HeaderStyle.Height = 25;
             this.dgvStudents.ThemeStyle.ReadOnly = true;
             this.dgvStudents.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
             this.dgvStudents.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgvStudents.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgvStudents.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            this.dgvStudents.ThemeStyle.RowsStyle.Height = 24;
+            this.dgvStudents.ThemeStyle.RowsStyle.Height = 25;
             this.dgvStudents.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgvStudents.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            this.dgvStudents.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvStudents_CellClick);
             // 
             // btnViewAll
             // 
@@ -319,6 +324,7 @@
             this.btnDelete.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
             this.btnDelete.Size = new System.Drawing.Size(50, 50);
             this.btnDelete.TabIndex = 16;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnEdit
             // 
@@ -360,6 +366,7 @@
             this.btnLast.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
             this.btnLast.Size = new System.Drawing.Size(50, 50);
             this.btnLast.TabIndex = 14;
+            this.btnLast.Click += new System.EventHandler(this.btnLast_Click);
             // 
             // btnNext
             // 
@@ -379,6 +386,7 @@
             this.btnNext.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
             this.btnNext.Size = new System.Drawing.Size(50, 50);
             this.btnNext.TabIndex = 13;
+            this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
             // 
             // btnPrevious
             // 
@@ -398,6 +406,7 @@
             this.btnPrevious.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
             this.btnPrevious.Size = new System.Drawing.Size(50, 50);
             this.btnPrevious.TabIndex = 12;
+            this.btnPrevious.Click += new System.EventHandler(this.btnPrevious_Click);
             // 
             // btnFirst
             // 
@@ -417,6 +426,7 @@
             this.btnFirst.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle;
             this.btnFirst.Size = new System.Drawing.Size(50, 50);
             this.btnFirst.TabIndex = 11;
+            this.btnFirst.Click += new System.EventHandler(this.btnFirst_Click);
             // 
             // lblViewAll
             // 
@@ -430,12 +440,26 @@
             this.lblViewAll.TabIndex = 24;
             this.lblViewAll.Text = "Click \'View All\'";
             // 
+            // lblNoStudents
+            // 
+            this.lblNoStudents.AutoSize = true;
+            this.lblNoStudents.BackColor = System.Drawing.Color.Silver;
+            this.lblNoStudents.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNoStudents.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.lblNoStudents.Location = new System.Drawing.Point(348, 285);
+            this.lblNoStudents.Name = "lblNoStudents";
+            this.lblNoStudents.Size = new System.Drawing.Size(132, 31);
+            this.lblNoStudents.TabIndex = 25;
+            this.lblNoStudents.Text = "No Students";
+            this.lblNoStudents.Visible = false;
+            // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(828, 572);
+            this.Controls.Add(this.lblNoStudents);
             this.Controls.Add(this.lblViewAll);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label7);
@@ -489,5 +513,6 @@
         public Guna.UI2.WinForms.Guna2CircleButton btnFirst;
         public Guna.UI2.WinForms.Guna2CircleButton btnEdit;
         public Guna.UI2.WinForms.Guna2CircleButton btnDelete;
+        public System.Windows.Forms.Label lblNoStudents;
     }
 }
