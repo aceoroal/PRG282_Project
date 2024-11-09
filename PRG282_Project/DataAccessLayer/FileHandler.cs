@@ -20,7 +20,7 @@ namespace PRG282_Project.DataAccessLayer
             List<Student> students = new List<Student>();
             if (File.Exists(path))
             {
-                using(StreamReader sr = new StreamReader(path))
+                using (StreamReader sr = new StreamReader(path))
                 {
                     string lines;
                     while ((lines = sr.ReadLine()) != null)
@@ -42,7 +42,7 @@ namespace PRG282_Project.DataAccessLayer
         // Updating the student.txt file by overriding it
         public void Write(List<Student> students)
         {
-            using(StreamWriter sw = new StreamWriter(path))
+            using (StreamWriter sw = new StreamWriter(path))
             {
                 foreach (Student student in students)
                 {
