@@ -118,12 +118,12 @@ namespace PRG282_Project.DataAccessLayer
     <table>
         <tr>
             <td>
-                <img src='https://i.ibb.co/hsBzNV2/bg-1.png' style='margin-left: -40px;width: 580px;height: 265px;' alt='bg-1' border='0'>
+                <img src='https://i.ibb.co/Kx7PBMsR/bg-1.png' style='margin-left: -40px;width: 580px;height: 265px;' alt='bg-1' border='0'>
                 <p style='color: #555555;font-size: 16.2px;margin-left: 35px;'>Date: {DateTime.Now.Date.ToString().Substring(0, 10)}</p>
                 <div></div>
                 <p style='font-weight: 600;font-size: 19px;margin-left: 35px;'>Total Students: {totalStudents}</p>
                 <p style='font-weight: 600;font-size: 19px;margin-left: 35px;'>Average Age: {averageAge}</p>
-                <img src='https://i.ibb.co/71CKqJf/bg-2.png' style='margin-left: -40px;width: 580px;height: 370px;' alt='bg-2' border='0'>
+                <img src='https://i.ibb.co/Y4QQ4PdX/bg-2.png' style='margin-left: -40px;width: 580px;height: 370px;' alt='bg-2' border='0'>
             </td>
         </tr>
     </table>
