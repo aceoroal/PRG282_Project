@@ -18,8 +18,10 @@
 
 > - In the NuGet Package Manager, click on the **Browse** tab.
 
-> - Search for `Guna.UI2.WinForms`. If `Guna.UI2.WinForms` is already installed, uninstall it and then install it again to ensure compatibility.
-> - Search for `HtmlRenderer.PdfSharp`. If `HtmlRenderer.PdfSharp` is already installed, uninstall it and then install it again to ensure compatibility.
+> - Search for `Guna.UI2.WinForms`. If `Guna.UI2.WinForms` is already installed, uninstall it and then install the latest version or version `2.0.4.6` to ensure compatibility.
+> - Search for `HtmlRenderer`. If `HtmlRenderer` is already installed, uninstall it and then install it again, install version `1.5.0.5` to ensure compatibility.
+> - Search for `HtmlRenderer.PdfSharp`. If `HtmlRenderer.PdfSharp` is already installed, uninstall it and then install it again, install version `1.5.0.6` to ensure compatibility.
+> - Search for `PdfSharp`. If `PdfSharp` is already installed, uninstall it and then install it again, install version `1.32.3057.0` to ensure compatibility.
 
 ### 2. Run the Application
 After installing the package, you can run the application by pressing **F5** or clicking **Start** in Visual Studio.
