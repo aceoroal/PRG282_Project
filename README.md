@@ -1,4 +1,27 @@
-# PRG282_Project
+# PRG282_Project - Student Management System
+
+## 📋 Project Overview
+
+PRG282_Project is a comprehensive **Student Management System** application developed in C# as part of the PRG282 course. This Windows Forms desktop application provides institutions with tools to manage student records, enrollment data, and generate reports efficiently.
+
+### 🎯 Key Features
+
+- **Student Records Management**: Create, read, update, and delete student information
+- **Enrollment Tracking**: Monitor student enrollment status and academic progress
+- **PDF Report Generation**: Generate professional PDF reports from student data
+- **User-Friendly Interface**: Modern UI built with Guna UI2.WinForms framework
+- **Data Management**: Efficient handling of student information using .NET Framework
+
+## 🛠️ Technology Stack
+
+- **Language**: C#
+- **Framework**: .NET Framework 4.8
+- **UI Framework**: Guna.UI2.WinForms
+- **Report Generation**: HtmlRenderer & PdfSharp
+- **Type**: Windows Forms Desktop Application
+
+---
+
 > [!TIP]
 > ## Installation
 > **1. Clone this Repository**
